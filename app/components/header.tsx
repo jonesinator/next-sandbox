@@ -1,4 +1,10 @@
-export default function Header({title, subtitle}: { title: string, subtitle: string }) {
+export default function Header({
+  title,
+  subtitle,
+}: {
+  title: string;
+  subtitle: string;
+}) {
   return (
     <div className="relative isolate overflow-hidden bg-gray-900 px-6 py-24 sm:py-32 lg:px-8">
       <img
@@ -34,9 +40,7 @@ export default function Header({title, subtitle}: { title: string, subtitle: str
         <h2 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
           {title}
         </h2>
-        <p className="mt-6 text-lg leading-8 text-gray-300">
-          {subtitle}
-        </p>
+        <p className="mt-6 text-lg leading-8 text-gray-300">{subtitle}</p>
       </div>
     </div>
   );
