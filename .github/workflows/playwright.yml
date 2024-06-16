@@ -20,6 +20,8 @@ jobs:
           npm install -g pnpm
           pnpm install
           pnpm exec playwright install --with-deps
+      - name: Install Task
+        uses: arduino/setup-task@v2
       - name: Run Playwright tests
         run: pnpm exec playwright test
       - uses: actions/upload-artifact@v4
