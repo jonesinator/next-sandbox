@@ -5,3 +5,7 @@
 build
 dependency-graph.svg
 node_modules
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
