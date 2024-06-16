@@ -1,0 +1,32 @@
+version: '3'
+
+tasks:
+  node-version:
+    silent: true
+    cmds:
+      - echo "You are using Node.js version $(node --version);"
+      - echo "however, the version $(cat .nvmrc) is required."
+      - echo "Use NVM to install the correct version."
+      - echo "See https://github.com/nvm-sh/nvm for details."
+      - echo "Once NVM is installed, you should be able to run:"
+      - echo "  nvm use"
+      - echo "From the root directory of this repository to start"
+      - echo "using the correct version."
+      - exit 1
+    status:
+      - '[ "$(node --version)" == "$(cat .nvmrc)" ]'
+
+  dev:
+    deps: [node-version]
+    cmds:
+      - pnpm exec next dev
+
+  build:
+    deps: [node-version]
+    cmds:
+      - pnpm exec next build
+
+  storybook:
+    deps: [node-version]
+    cmds:
+      - pnpm exec storybook dev
