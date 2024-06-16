@@ -14,7 +14,7 @@ export default tseslint.config(
   {
     languageOptions: {
       parserOptions: {
-        project: true
+        project: true,
       },
       globals: globals.node,
     },

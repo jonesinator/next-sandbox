@@ -3,6 +3,7 @@ version: "3"
 tasks:
   node-version:
     silent: true
+    run: once
     cmds:
       - echo "You are using Node.js version $(node --version);"
       - echo "however, the version $(cat .nvmrc) is required."
@@ -18,6 +19,7 @@ tasks:
 
   javascript-dependencies:
     silent: true
+    run: once
     deps: [node-version]
     sources:
       - package.json
@@ -28,42 +30,57 @@ tasks:
       - pnpm install
 
   dev:
+    run: once
     deps: [javascript-dependencies]
     cmds:
       - pnpm exec next dev
 
   build:
+    run: once
     deps: [javascript-dependencies]
     cmds:
       - pnpm exec next build
 
   storybook:
+    run: once
     deps: [javascript-dependencies]
     cmds:
       - pnpm exec storybook dev
 
   dependency-graph:
+    run: once
     deps: [javascript-dependencies]
     cmds:
       - pnpm exec depcruise src --include-only "^src" --output-type dot | dot -T svg > dependency-graph.svg
       - open dependency-graph.svg
 
   knip:
+    run: once
     deps: [javascript-dependencies]
     cmds:
       - pnpm exec knip
 
   lint:
+    run: once
     deps: [javascript-dependencies]
     cmds:
       - pnpm exec eslint --cache .
 
   format:
+    run: once
     deps: [javascript-dependencies]
     cmds:
       - pnpm exec prettier . --write
 
   format-check:
+    run: once
     deps: [javascript-dependencies]
     cmds:
       - pnpm exec prettier . --check
+
+  pre-commit:
+    deps:
+      - build
+      - knip
+      - lint
+      - format-check
