@@ -35,16 +35,15 @@
         "name": "next"
       }
     ],
-    "baseUrl": "./",
     "paths": {
-      "@components/*": ["app/components/*"]
+      "@components/*": ["./src/components/*"]
     }
   },
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
     "build/types/**/*.ts"
   ],
   "exclude": ["node_modules"]
