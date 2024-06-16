@@ -84,6 +84,12 @@ tasks:
     cmds:
       - pnpm exec playwright test
 
+  vitest:
+    run: once
+    deps: [javascript-dependencies]
+    cmds:
+      - pnpm exec vitest run
+
   pre-commit:
     deps:
       - build
