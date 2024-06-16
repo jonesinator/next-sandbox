@@ -2,3 +2,4 @@ node_modules
 .next
 build
 *storybook.log
+dependency-graph.svg
