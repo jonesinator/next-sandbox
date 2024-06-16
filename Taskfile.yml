@@ -16,43 +16,54 @@ tasks:
     status:
       - '[ "$(node --version)" == "$(cat .nvmrc)" ]'
 
-  dev:
+  javascript-dependencies:
+    silent: true
     deps: [node-version]
+    sources:
+      - package.json
+      - pnpm-lock.yaml
+    generates:
+      - node_modules/.pnpm/lock.yaml
+    cmds:
+      - pnpm install
+
+  dev:
+    deps: [javascript-dependencies]
     cmds:
       - pnpm exec next dev
 
   build:
-    deps: [node-version]
+    deps: [javascript-dependencies]
     cmds:
       - pnpm exec next build
 
   storybook:
-    deps: [node-version]
+    deps: [javascript-dependencies]
     cmds:
       - pnpm exec storybook dev
 
   dependency-graph:
-    deps: [node-version]
+    deps: [javascript-dependencies]
     cmds:
       - pnpm exec depcruise src --include-only "^src" --output-type dot | dot -T svg > dependency-graph.svg
       - open dependency-graph.svg
 
   knip:
-    deps: [node-version]
+    deps: [javascript-dependencies]
     cmds:
       - pnpm exec knip
 
   lint:
-    deps: [node-version]
+    deps: [javascript-dependencies]
     cmds:
       - pnpm exec eslint --cache .
 
   format:
-    deps: [node-version]
+    deps: [javascript-dependencies]
     cmds:
       - pnpm exec prettier . --write
 
   format-check:
-    deps: [node-version]
+    deps: [javascript-dependencies]
     cmds:
       - pnpm exec prettier . --check
