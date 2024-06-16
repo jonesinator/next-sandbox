@@ -24,6 +24,8 @@ jobs:
         uses: arduino/setup-task@v2
       - name: Run Playwright Tests
         run: task playwright
+      - name: Run Vitest Tests
+        run: task vitest
       - uses: actions/upload-artifact@v4
         if: always()
         with:
