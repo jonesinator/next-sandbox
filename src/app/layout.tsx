@@ -1,8 +1,27 @@
+import localFont from "next/font/local";
+
 import "@app/globals.css";
 import Banner from "@components/banner";
 import Footer from "@components/footer";
 import Header from "@components/header";
 import Navbar from "@components/navbar";
+
+const interFont = localFont({
+  src: [
+    {
+      path: "./InterVariable.woff2",
+      style: "normal",
+      weight: "100 900",
+    },
+    {
+      path: "./InterVariable-Italic.woff2",
+      style: "italic",
+      weight: "100 900",
+    },
+  ],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 export default function RootLayout({
   children,
@@ -10,9 +29,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={interFont.className}>
       <head>
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
         <title>It's a hellscape!</title>
       </head>
       <body>

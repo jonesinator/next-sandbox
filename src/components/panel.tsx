@@ -1,3 +1,6 @@
+import Image from "next/image";
+import ScreenshotImage from "./screenshot.png";
+
 import {
   CloudArrowUpIcon,
   LockClosedIcon,
@@ -66,11 +69,9 @@ export default function Panel() {
                 aria-hidden="true"
               />
               <div className="mx-auto max-w-2xl sm:mx-0 sm:max-w-none">
-                <img
-                  src="https://tailwindui.com/img/component-images/project-app-screenshot.png"
+                <Image
+                  src={ScreenshotImage}
                   alt="Product screenshot"
-                  width={2432}
-                  height={1442}
                   className="-mb-12 w-[57rem] max-w-none rounded-tl-xl bg-gray-800 ring-1 ring-white/10"
                 />
               </div>
