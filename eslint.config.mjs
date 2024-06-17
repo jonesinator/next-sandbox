@@ -6,7 +6,7 @@ import tseslint from "typescript-eslint";
 
 export default tseslint.config(
   {
-    ignores: ["build/**"],
+    ignores: [".next/**"],
   },
   eslint.configs.recommended,
   ...tseslint.configs.strictTypeChecked,
