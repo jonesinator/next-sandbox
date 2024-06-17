@@ -78,9 +78,15 @@ tasks:
     cmds:
       - pnpm exec prettier . --check
 
-  playwright:
+  playwright-dependencies:
     run: once
     deps: [javascript-dependencies]
+    cmds:
+      - pnpm exec playwright install --with-deps
+
+  playwright:
+    run: once
+    deps: [playwright-dependencies]
     cmds:
       - pnpm exec playwright test
 
