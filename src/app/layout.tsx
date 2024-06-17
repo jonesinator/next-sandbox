@@ -20,7 +20,7 @@ export default function RootLayout({
           <Banner />
           <Navbar />
           <Header
-            title="Jamie L. Thompson, LCSW"
+            title="Jamie L. Thompson, LCSW!!!"
             subtitle="Badass Therapy Something Something"
           />
           {children}
